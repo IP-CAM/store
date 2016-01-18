@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2016 at 02:32 PM
+-- Generation Time: Jan 17, 2016 at 06:40 PM
 -- Server version: 5.6.27-0ubuntu1
 -- PHP Version: 5.6.11-1ubuntu3.1
 
@@ -2292,7 +2292,7 @@ CREATE TABLE IF NOT EXISTS `oc_product` (
 INSERT INTO `oc_product` (`product_id`, `model`, `sku`, `upc`, `ean`, `jan`, `isbn`, `mpn`, `location`, `quantity`, `stock_status_id`, `image`, `manufacturer_id`, `shipping`, `price`, `points`, `tax_class_id`, `date_available`, `weight`, `weight_class_id`, `length`, `width`, `height`, `length_class_id`, `subtract`, `minimum`, `sort_order`, `status`, `viewed`, `date_added`, `date_modified`) VALUES
 (51, '36919', 'trico-36919', '', '', '', '', '', '', 0, 6, 'catalog/Sampling-drum-kit-reservoir.jpg', 16, 1, 0.0000, 0, 9, '2016-01-17', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 1, 1, 1, '2016-01-17 13:49:33', '2016-01-17 13:49:57'),
 (52, 'Tri-Nado', 'roots-trinado-825', '', '', '', '', '', '', 0, 6, 'catalog/TriNado-Gallery Image 256x166.jpg', 12, 1, 0.0000, 0, 9, '2016-01-17', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 1, 1, 2, '2016-01-17 13:52:38', '0000-00-00 00:00:00'),
-(53, 'HTC-Bed-Mounted-PU-09', 'HTC-Bed-Mounted-PU-09', '', '', '', '', '', '', 2, 6, 'catalog/20120724_210223.jpg', 13, 1, 3450.0000, 0, 9, '2016-01-17', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 1, 1, 6, '2016-01-17 13:55:03', '0000-00-00 00:00:00'),
+(53, 'HTC-Bed-Mounted-PU-09', 'HTC-Bed-Mounted-PU-09', '', '', '', '', '', '', 2, 6, 'catalog/20120724_210223.jpg', 13, 1, 3450.0000, 0, 9, '2016-01-17', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 1, 1, 7, '2016-01-17 13:55:03', '2016-01-17 15:30:19'),
 (50, 'HP28B01', 'stanley-hp28B02', '', '', '', '', '', '', 0, 6, 'catalog/Twin-8.png', 15, 1, 0.0000, 0, 9, '2016-01-17', 0.00000000, 1, 0.00000000, 0.00000000, 0.00000000, 2, 1, 1, 1, 1, 0, '2016-01-17 13:39:07', '2016-01-17 13:46:17');
 
 -- --------------------------------------------------------
@@ -2378,13 +2378,16 @@ CREATE TABLE IF NOT EXISTS `oc_product_image` (
   `product_id` int(11) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `sort_order` int(3) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=2357 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2360 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `oc_product_image`
 --
 
 INSERT INTO `oc_product_image` (`product_image_id`, `product_id`, `image`, `sort_order`) VALUES
+(2358, 53, 'catalog/IMG_1995.jpg', 2),
+(2359, 53, 'catalog/IMG_1990.jpg', 1),
+(2357, 53, 'catalog/IMG_1989.jpg', 3),
 (2356, 51, 'catalog/reservoir_1-90x90.jpg', 0),
 (2355, 50, 'catalog/Twin8_app.png', 3),
 (2354, 50, 'catalog/twin8_4.png', 2);
@@ -3089,7 +3092,6 @@ INSERT INTO `oc_url_alias` (`url_alias_id`, `query`, `keyword`) VALUES
 (871, 'category_id=86', ''),
 (872, 'category_id=87', ''),
 (873, 'category_id=88', ''),
-(887, 'product_id=53', ''),
 (889, 'information_id=6', 'delivery'),
 (890, 'information_id=3', 'privacy'),
 (891, 'information_id=5', 'terms'),
@@ -8626,7 +8628,7 @@ ALTER TABLE `oc_product_discount`
 -- AUTO_INCREMENT for table `oc_product_image`
 --
 ALTER TABLE `oc_product_image`
-  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2357;
+  MODIFY `product_image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2360;
 --
 -- AUTO_INCREMENT for table `oc_product_option`
 --

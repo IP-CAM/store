@@ -379,7 +379,8 @@ class ControllerUserUserPermission extends Controller {
 		foreach ($files as $file) {
 			$controller = substr($file, strlen(DIR_APPLICATION . 'controller/'));
 
-			$permission = substr($controller, 0, strrpos($controller, '.'));
+			// pedro 20160119 $permission = substr($controller, 0, strrpos($controller, '.'));
+    if ((strlen($controller)<4) || (substr($controller, strlen($controller)-4, 4) != '.php'))       { continue; }
 
 			if (!in_array($permission, $ignore)) {
 				$data['permissions'][] = $permission;

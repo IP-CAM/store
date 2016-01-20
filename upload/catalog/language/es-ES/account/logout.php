@@ -1,0 +1,8 @@
+<?php
+// Heading
+$_['heading_title'] = 'Cerrar Sesión';
+
+// Text
+$_['text_message']  = '<p>Has cerrado sesión correctamente. </p><p>Tu carro de compras ha sido guardado, los productos en su interior estarán disponibles cuando inicies sesión nuevamente.</p>';
+$_['text_account']  = 'Cuenta';
+$_['text_logout']   = 'Cerrar Sesión';

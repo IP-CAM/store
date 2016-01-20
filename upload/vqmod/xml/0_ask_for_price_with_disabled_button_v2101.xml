@@ -1,0 +1,644 @@
+<modification>
+	<id><![CDATA[Ask for Price with Disabled Button v2.1.0.1]]></id>
+	<version><![CDATA[]]></version>
+	<vqmver><![CDATA[]]></vqmver>
+	<author><![CDATA[GoGo OpenCart]]></author>
+	<file name="catalog/view/theme/*/template/module/bestseller.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/module/bestseller.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/module/featured.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/module/featured.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$product_info['price']) {
+					$zero_price = $product_info['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/module/latest.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/module/latest.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/module/special.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/module/special.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/category.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/category.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[			$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/manufacturer_info.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/manufacturer.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[			$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/search.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/search.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/special.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/special.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[			if ((float)$result['price']) {
+				$zero_price = $result['price'];
+			} else {
+				$zero_price = false;
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[				'zero_price'  => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/account/wishlist.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" title="<?php echo $button_cart; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" data-toggle="tooltip" title="<?php echo $button_cart; ?>" class="btn btn-primary" style="cursor: default !important; background: gray !important; color: lightgray !important;"><i class="fa fa-shopping-cart"></i></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');" data-toggle="tooltip" title="<?php echo $button_cart; ?>" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/account/wishlist.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$product_info['price']) {
+					$zero_price = $product_info['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'      => $price,]]></search>
+			<add><![CDATA[					'zero_price' => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/compare.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<input type="button" value="<?php echo $button_cart; ?>" class="btn btn-primary btn-block" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');" />]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<input type="button" value="<?php echo $button_cart; ?>" class="btn btn-primary btn-block" style="cursor: default !important; background: gray !important; color: lightgray !important;" />
+<?php } else { ?>
+<input type="button" value="<?php echo $button_cart; ?>" class="btn btn-primary btn-block" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');" />
+<?php } ?>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/compare.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[		$data['text_zero_price'] = $this->language->get('text_zero_price');]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$product_info['price']) {
+					$zero_price = $product_info['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'        => $price,]]></search>
+			<add><![CDATA[					'zero_price'   => $zero_price,]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/product.tpl">
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $price; ?>]]></search>
+			<add><![CDATA[<?php if ($zero_price <= 0) { ?><a onclick="$('a[href=\'#tab-askquestion\']').trigger('click'); return false;" style="text-decoration: none !important; cursor: pointer !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $price; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($tax) { ?>]]></search>
+			<add><![CDATA[<?php if (($tax) && ($zero_price > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>]]></search>
+			<add><![CDATA[<?php if ($zero_price <= 0) { ?>
+<button type="button" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block" style="cursor: default !important; background: gray !important; color: lightgray !important;"><?php echo $button_cart; ?></button>
+<?php } else { ?>
+<button type="button" id="button-cart" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary btn-lg btn-block"><?php echo $button_cart; ?></button>
+<?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace" index="1"><![CDATA[<?php echo $product['price']; ?>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?><a href="<?php echo $product['href'] . '#tab-askquestion'; ?>" style="text-decoration: none !important;"><img src="image/ask_for_price.png" align="absmiddle" /> <?php echo $text_zero_price; ?></a><?php } else { ?><?php echo $product['price']; ?><?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php if ($product['tax']) { ?>]]></search>
+			<add><![CDATA[<?php if (($product['tax']) && ($product['zero_price'] > 0)) { ?>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>]]></search>
+			<add><![CDATA[<?php if ($product['zero_price'] <= 0) { ?>
+<button type="button" style="cursor: default !important; background: gray !important; color: lightgray !important;"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
+<?php } else { ?>
+<button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>', '<?php echo $product['minimum']; ?>');"><span class="hidden-xs hidden-sm hidden-md"><?php echo $button_cart; ?></span> <i class="fa fa-shopping-cart"></i></button>
+<?php } ?>]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="1"><![CDATA[<li><a href="#tab-review" data-toggle="tab"><?php echo $tab_review; ?></a></li>]]></search>
+			<add><![CDATA[            <li><a href="#tab-askquestion" class="scroll" data-toggle="tab"><?php echo $tab_question; ?></a></li>]]></add>
+		</operation>
+		<operation>
+			<search position="replace"><![CDATA[<?php echo $captcha; ?>]]></search>
+			<add><![CDATA[<?php echo $captcha1; ?>]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="4"><![CDATA[<?php echo $text_login; ?>]]></search>
+			<add><![CDATA[            <a href="#tab-askquestion" class="scroll"></a><div class="tab-pane" id="tab-askquestion">
+              <form class="form-horizontal" id="form-askquestion">
+                <div id="askquestion"></div>
+                <h2><?php echo $text_ask; ?> <?php echo $heading_title; ?>?</h2>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-name1"><?php echo $entry_name_ask; ?></label>
+                    <input type="text" name="name1" value="<?php echo $name1; ?>" id="input-name1" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-email1"><?php echo $entry_email_ask; ?></label>
+                    <input type="text" name="email1" value="<?php echo $email1; ?>" id="input-email1" class="form-control" />
+                  </div>
+                </div>
+                <div class="form-group required">
+                  <div class="col-sm-12">
+                    <label class="control-label" for="input-text1"><?php echo $entry_question_ask; ?></label>
+                    <textarea name="text1" rows="5" id="input-text1" class="form-control"></textarea>
+                  </div>
+                </div>
+                <?php echo $captcha2; ?>
+                <div class="buttons clearfix">
+                  <div class="pull-right">
+                    <button type="button" id="button-askquestion" data-loading-text="<?php echo $entry_sending_ask; ?>" class="btn btn-primary"><?php echo $entry_send_ask; ?></button>
+                  </div>
+                </div>
+              </form>
+            </div>]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[<?php echo $footer; ?>]]></search>
+			<add><![CDATA[<script type="text/javascript"><!--
+$('#button-askquestion').on('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write1&product_id=<?php echo $product_id; ?>',
+		type: 'post',
+		dataType: 'json',
+		data: $("#form-askquestion").serialize(),
+		beforeSend: function() {
+			$('#button-askquestion').button('loading');
+		},
+		complete: function() {
+			$('#button-askquestion').button('reset');
+		},
+		success: function(json) {
+			$('.alert-success, .alert-danger').remove();
+
+			if (json['error']) {
+				$('#askquestion').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
+			}
+
+			if (json['success']) {
+				$('#askquestion').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+
+				$('input[name=\'name1\']').val('');
+				$('input[name=\'email1\']').val('');
+				$('textarea[name=\'text1\']').val('');
+			}
+		}
+	});
+});
+//--></script>
+<script type="text/javascript"><!--
+	$(window).load(function ()
+	{
+    if(window.location.hash.length > 1) {
+        $('a[href="#tab-askquestion"]').click();
+    }
+	});
+//--></script>
+<script type="text/javascript"><!--
+jQuery(document).ready(function($) {
+	$(".scroll").click(function(event){		
+		event.preventDefault();
+		$('html,body').animate({scrollTop:$(this.hash).offset().top}, 1000);
+	});
+});
+
+//--></script>]]></add>
+		</operation>
+	</file>
+	<file name="catalog/controller/product/product.php">
+		<operation>
+			<search position="after"><![CDATA[$data['button_cart'] = $this->language->get('button_cart');]]></search>
+			<add><![CDATA[			$data['text_zero_price'] = $this->language->get('text_zero_price');
+			$data['tab_question'] = $this->language->get('tab_question');
+			$data['text_ask'] = $this->language->get('text_ask');
+			$data['entry_name_ask'] = $this->language->get('entry_name_ask');
+			$data['entry_email_ask'] = $this->language->get('entry_email_ask');
+			$data['entry_question_ask'] = $this->language->get('entry_question_ask');
+			$data['entry_send_ask'] = $this->language->get('entry_send_ask');
+			$data['entry_sending_ask'] = $this->language->get('entry_sending_ask');]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[if ($product_info['quantity'] <= 0) {]]></search>
+			<add><![CDATA[			if (isset($this->request->post['name1'])) {
+				$data['name1'] = $this->request->post['name1'];
+			} else {
+				$data['name1'] = $this->customer->getFirstName();
+			}
+
+			if (isset($this->request->post['email1'])) {
+				$data['email1'] = $this->request->post['email1'];
+			} else {
+				$data['email1'] = $this->customer->getEmail();
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2"><![CDATA[$data['price'] = false;]]></search>
+			<add><![CDATA[			if ((float)$product_info['price']) {
+				$data['zero_price'] = $product_info['price'];
+			} else {
+				$data['zero_price'] = false;
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="replace" index="1" offset="5"><![CDATA[// Captcha]]></search>
+			<add><![CDATA[			// Captcha1
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
+				$data['captcha1'] = $this->load->controller('captcha1/' . $this->config->get('config_captcha'));
+			} else {
+				$data['captcha1'] = '';
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[$data['attribute_groups'] = $this->model_catalog_product->getProductAttributes($this->request->get['product_id']);]]></search>
+			<add><![CDATA[			// Captcha2
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('askaquestion', (array)$this->config->get('config_captcha_page'))) {
+				$data['captcha2'] = $this->load->controller('captcha2/' . $this->config->get('config_captcha'));
+			} else {
+				$data['captcha2'] = '';
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="after" offset="2" index="2"><![CDATA[$price = false;]]></search>
+			<add><![CDATA[				if ((float)$result['price']) {
+					$zero_price = $result['price'];
+				} else {
+					$zero_price = false;
+				}]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA['price'       => $price,]]></search>
+			<add><![CDATA[					'zero_price'  => $zero_price,]]></add>
+		</operation>
+		<operation>
+			<search position="replace" index="3" offset="7"><![CDATA[// Captcha]]></search>
+			<add><![CDATA[			// Captcha1
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('review', (array)$this->config->get('config_captcha_page'))) {
+				$captcha1 = $this->load->controller('captcha1/' . $this->config->get('config_captcha') . '/validate');
+
+				if ($captcha1) {
+					$json['error'] = $captcha1;
+				}
+			}]]></add>
+		</operation>
+		<operation>
+			<search position="before"><![CDATA[public function getRecurringDescription() {]]></search>
+			<add><![CDATA[	public function write1() {
+		$this->load->language('product/product');
+
+		$json = array();
+
+		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
+			if ((utf8_strlen($this->request->post['name1']) < 3) || (utf8_strlen($this->request->post['name1']) > 25)) {
+				$json['error'] = $this->language->get('error_name_ask');
+			}
+			
+			if (!preg_match('/^[^\@]+@.*\.[a-z]{2,15}$/i', $this->request->post['email1'])) {
+				$json['error'] = $this->language->get('error_email_ask');
+			}
+
+			if ((utf8_strlen($this->request->post['text1']) < 25) || (utf8_strlen($this->request->post['text1']) > 1000)) {
+				$json['error'] = $this->language->get('error_question_ask');
+			}
+
+			// Captcha2
+			if ($this->config->get($this->config->get('config_captcha') . '_status') && in_array('askaquestion', (array)$this->config->get('config_captcha_page'))) {
+				$captcha2 = $this->load->controller('captcha2/' . $this->config->get('config_captcha') . '/validate');
+
+				if ($captcha2) {
+					$json['error'] = $captcha2;
+				}
+			}
+
+			if (!isset($json['error'])) {
+				$this->load->model('catalog/askquestion');
+
+				$this->model_catalog_askquestion->addAskquestion($this->request->get['product_id'], $this->request->post);
+
+				$json['success'] = $this->language->get('text_success_ask');
+			}
+		}
+
+		$this->response->addHeader('Content-Type: application/json');
+		$this->response->setOutput(json_encode($json));
+	}]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/setting/setting.php">
+		<operation>
+			<search position="after"><![CDATA[$data['text_review'] = $this->language->get('text_review');]]></search>
+			<add><![CDATA[		$data['text_askaquestion'] = $this->language->get('text_askaquestion');]]></add>
+		</operation>
+		<operation>
+			<search position="after"><![CDATA[$data['captcha_pages'] = array();]]></search>
+			<add><![CDATA[		$data['captcha_pages'][] = array(
+			'text'  => $this->language->get('text_askaquestion'),
+			'value' => 'askaquestion'
+		);]]></add>
+		</operation>
+	</file>
+	<file name="catalog/language/english/english.php">
+		<operation>
+			<search position="after"><![CDATA[<?php]]></search>
+			<add><![CDATA[$_['text_zero_price']       = 'Ask for Price';
+$_['tab_question']          = 'Ask a Question';
+$_['text_ask']              = 'Do you have any questions about ';
+$_['entry_name_ask']        = 'Your Name:';
+$_['entry_email_ask']       = 'Your E-Mail Address:';
+$_['entry_question_ask']    = 'Your Question:';
+$_['entry_send_ask']        = 'Send';
+$_['entry_sending_ask']     = 'Sending...';
+$_['text_product_e_ask']    = 'Product Name: %s';
+$_['text_url_e_ask']        = 'Product URL: %s';
+$_['text_name_e_ask']       = 'Name: %s';
+$_['text_email_e_ask']      = 'E-Mail Address: %s';
+$_['text_question_e_ask']   = 'Question:';
+$_['text_subject_e_ask']    = '%s wants to ask you something about %s';
+$_['error_name_ask']        = 'Warning: The Name must be between 3 and 25 characters!';
+$_['error_email_ask']       = 'Warning: The E-Mail Address does not appear to be valid!';
+$_['error_question_ask']    = 'Warning: The Question must be between 25 and 1000 characters!';
+$_['text_success_ask']      = 'Your question has been successfully sent. We will answer you as soon as possible.';]]></add>
+		</operation>
+	</file>
+	<file name="admin/language/english/english.php">
+		<operation>
+			<search position="after"><![CDATA[<?php]]></search>
+			<add><![CDATA[$_['text_askaquestion']                = 'Ask a Question';]]></add>
+		</operation>
+	</file>
+</modification>

@@ -1,0 +1,11 @@
+[19-Jan-2016 11:03:59 America/Denver] PHP Warning:  file_put_contents(/home/pedrocones/webmaster/Repository/store/upload/vqmod/checked.cache): failed to open stream: Permission denied in /home/pedrocones/webmaster/Repository/store/upload/vqmod/vqmod.php on line 251
+[19-Jan-2016 11:03:59 America/Denver] PHP Warning:  file_put_contents(/home/pedrocones/webmaster/Repository/store/upload/vqmod/mods.cache): failed to open stream: Permission denied in /home/pedrocones/webmaster/Repository/store/upload/vqmod/vqmod.php on line 300
+[19-Jan-2016 11:19:35 America/Denver] PHP Warning:  require_once(/home/pedrocones/webmaster/Repository/store/upload/vqmod/vqmod.php): failed to open stream: No such file or directory in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 17
+[19-Jan-2016 11:19:35 America/Denver] PHP Fatal error:  require_once(): Failed opening required '/home/pedrocones/webmaster/Repository/store/upload/vqmod/vqmod.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 17
+[19-Jan-2016 11:19:50 America/Denver] PHP Warning:  require_once(../vqmod/vqmod.php): failed to open stream: No such file or directory in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 17
+[19-Jan-2016 11:19:50 America/Denver] PHP Fatal error:  require_once(): Failed opening required '../vqmod/vqmod.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 17
+[19-Jan-2016 11:21:50 America/Denver] PHP Fatal error:  Class 'Registry' not found in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 24
+[19-Jan-2016 11:22:17 America/Denver] PHP Fatal error:  Class 'Config' not found in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 27
+[19-Jan-2016 11:22:45 America/Denver] PHP Fatal error:  Class 'DB' not found in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 31
+[19-Jan-2016 11:23:37 America/Denver] PHP Notice:  Undefined variable: db in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 35
+[19-Jan-2016 11:23:37 America/Denver] PHP Fatal error:  Call to a member function query() on null in /home/pedrocones/webmaster/Repository/store/upload/admin/index.php on line 35

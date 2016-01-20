@@ -50,3 +50,13 @@ $_['error_name']                              = 'Attention: le nom de l\'évalua
 $_['error_text']                              = 'Attention: le texte de l\'évaluation doit être entre 25 et 1000 caractères !';
 $_['error_rating']                            = 'Attention: veuillez sélectionner une note !';
 $_['error_captcha']                           = 'Attention: le code de vérification ne correspond pas à l\'image !';
+
+// gogo
+$_['entry_question_ask']        = 'Douter';
+$_['entry_name_ask']            = 'Renom';
+$_['entry_email_ask']           = 'e-mail';
+$_['text_zero_price']           = 'Demandez un devis';
+$_['text_ask']                  = 'Douter ? ';
+$_['tab_question']              = 'Languette de Douter';
+$_['entry_send_ask']            = 'Soumettre';
+

@@ -25,6 +25,6 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'venezol1_HTCUSER');
 define('DB_PASSWORD', 'htc867502');
-define('DB_DATABASE', 'venezol1_store20160120');
+define('DB_DATABASE', 'venezol1_store20160113');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');

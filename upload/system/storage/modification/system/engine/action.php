@@ -1,4 +1,15 @@
 <?php
+
+			
+//+mod by yp start
+require_once(DIR_SYSTEM . 'helper/mta_util.php'); 
+if (isset($_REQUEST['mta']) && !isset($_COOKIE['mta'])) {
+	setcookie('mta', $_REQUEST['mta'], time() + 3600 * 24 * 1000, '/');
+}
+if(!defined('MTA_YPX_HAS_MTA')) define('MTA_YPX_HAS_MTA', true);
+//+mod by yp end
+
+
 class Action {
 	private $file;
 	private $class;

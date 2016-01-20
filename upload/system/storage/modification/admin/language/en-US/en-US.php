@@ -10,14 +10,13 @@ $_['word_special'] = 'special';
 //+mod by yp end
 
 
-$_['text_askaquestion']                = 'Ask a Question';
 // Locale
-$_['code']                          = 'en';
+$_['code']                          = 'en-us';
 $_['direction']                     = 'ltr';
-$_['date_format_short']             = 'd/m/Y';
-$_['date_format_long']              = 'l dS F Y';
+$_['date_format_short']             = 'm/d/Y';
+$_['date_format_long']              = 'l F dS Y';
 $_['time_format']                   = 'h:i:s A';
-$_['datetime_format']               = 'd/m/Y H:i:s';
+$_['datetime_format']               = 'm/d/Y H:i:s';
 $_['decimal_point']                 = '.';
 $_['thousand_point']                = ',';
 
@@ -57,8 +56,8 @@ $_['button_copy']                   = 'Copy';
 $_['button_back']                   = 'Back';
 $_['button_remove']                 = 'Remove';
 $_['button_refresh']                = 'Refresh';
-$_['button_export']                 = 'Export';
-$_['button_import']                 = 'Import';
+$_['button_backup']                 = 'Backup';
+$_['button_restore']                = 'Restore';
 $_['button_download']               = 'Download';
 $_['button_rebuild']                = 'Rebuild';
 $_['button_upload']                 = 'Upload';
@@ -106,11 +105,9 @@ $_['button_unlock']                 = 'Unlock Account';
 $_['button_link']                   = 'Link';
 $_['button_currency']               = 'Refresh Currency Values';
 $_['button_apply']                  = 'Apply';
-$_['button_category_add']           = 'Add Category';
 
 // Tab
 $_['tab_address']                   = 'Address';
-$_['tab_additional']                = 'Additional';
 $_['tab_admin']                     = 'Admin';
 $_['tab_attribute']                 = 'Attribute';
 $_['tab_customer']                  = 'Customer Details';
@@ -128,10 +125,10 @@ $_['tab_option']                    = 'Option';
 $_['tab_server']                    = 'Server';
 $_['tab_store']                     = 'Store';
 $_['tab_special']                   = 'Special';
-$_['tab_session']                   = 'Session';
 $_['tab_local']                     = 'Local';
 $_['tab_mail']                      = 'Mail';
 $_['tab_module']                    = 'Module';
+$_['tab_order']                     = 'Order Details';
 $_['tab_payment']                   = 'Payment Details';
 $_['tab_product']                   = 'Products';
 $_['tab_reward']                    = 'Reward Points';
@@ -144,11 +141,11 @@ $_['tab_marketing']                 = 'Marketing';
 $_['tab_online']                    = 'People Online';
 $_['tab_activity']                  = 'Recent Activity';
 $_['tab_recurring']                 = 'Recurring';
-$_['tab_action']                    = 'Action';
+$_['tab_action']                    = 'действие';
 $_['tab_google']                    = 'Google';
 
 // Error
-$_['error_exception']               = 'Error Code(%s): %s in %s on line %s';
+$_['error_exception']               = 'Error Code (%s): %s in %s on line %s';
 $_['error_upload_1']                = 'Warning: The uploaded file exceeds the upload_max_filesize directive in php.ini!';
 $_['error_upload_2']                = 'Warning: The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form!';
 $_['error_upload_3']                = 'Warning: The uploaded file was only partially uploaded!';
@@ -157,7 +154,3 @@ $_['error_upload_6']                = 'Warning: Missing a temporary folder!';
 $_['error_upload_7']                = 'Warning: Failed to write file to disk!';
 $_['error_upload_8']                = 'Warning: File upload stopped by extension!';
 $_['error_upload_999']              = 'Warning: No error code available!';
-
-// gogo pedro 20160119
-$_['text_askaquestion'] = 'Ask a Question';
-

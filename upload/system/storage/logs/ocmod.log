@@ -120,3 +120,4158 @@ Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
   file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
   search = '<?php if ($product['tax']) { ?>'
 ----------------------------------------------------------------
+2016-01-20 13:31:35 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+FILE: catalog/model/total/coupon.php
+CODE: $discount_total = 0;
+LINE: 109
+CODE: $sub_total += $product['total'];
+LINE: 123
+CODE: $total_data[] = array(
+LINE: 192
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer
+LINE: 307
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/controller/marketing/coupon.php
+CODE: function getForm() {
+LINE: 290
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 14:00:10 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 14:00:14 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 14:31:48 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 14:33:21 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+FILE: catalog/model/total/coupon.php
+CODE: $discount_total = 0;
+LINE: 109
+CODE: $sub_total += $product['total'];
+LINE: 123
+CODE: $total_data[] = array(
+LINE: 192
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer
+LINE: 307
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/controller/marketing/coupon.php
+CODE: function getForm() {
+LINE: 290
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 14:41:55 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+FILE: catalog/model/total/coupon.php
+CODE: $discount_total = 0;
+LINE: 109
+CODE: $sub_total += $product['total'];
+LINE: 123
+CODE: $total_data[] = array(
+LINE: 192
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer
+LINE: 307
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/controller/marketing/coupon.php
+CODE: function getForm() {
+LINE: 290
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+2016-01-20 15:07:34 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+FILE: catalog/model/total/coupon.php
+CODE: $discount_total = 0;
+LINE: 109
+CODE: $sub_total += $product['total'];
+LINE: 123
+CODE: $total_data[] = array(
+LINE: 192
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer
+LINE: 307
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/controller/marketing/coupon.php
+CODE: function getForm() {
+LINE: 290
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+MOD: Tracking Input for openCart 2
+CODE: if (!$this->request->post['code']) {
+LINE: 1226
+CODE: $coupon_info = $this->model_marketing_coupon->getCouponByCode
+LINE: 584
+FILE: catalog/controller/account/register.php
+CODE: $data['column_left'] =
+LINE: 369
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 410
+FILE: catalog/controller/affiliate/register.php
+CODE: $data['column_left'] =
+LINE: 370
+CODE: function validate() {
+LINE: 410
+FILE: catalog/controller/affiliate/tracking.php
+CODE: function index() {
+LINE: 18
+FILE: catalog/controller/total/coupon.php
+CODE: ->getCoupon($coupon);
+LINE: 41
+CODE: $this->language->get('text_success');
+LINE: 62
+FILE: catalog/controller/checkout/register.php
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 129
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 199
+FILE: catalog/model/affiliate/affiliate.php
+CODE: $affiliate_id = $this->db->getLastId();
+LINE: 12
+CODE: public function editPayment(
+LINE: 106
+CODE: public function getCoupon($code) {
+LINE: 2
+CODE: if ($status) {
+LINE: 101
+FILE: catalog/view/theme/default/template/account/register.tpl
+CODE: <?php echo $footer
+LINE: 711
+FILE: catalog/view/theme/default/template/affiliate/register.tpl
+CODE: <?php echo $footer
+LINE: 338
+FILE: catalog/view/theme/default/template/affiliate/tracking.tpl
+CODE: <?php echo $footer
+LINE: 135
+FILE: catalog/view/theme/default/template/checkout/register.tpl
+CODE: <div class="row">
+LINE: 12
+----------------------------------------------------------------
+2016-01-20 15:14:33 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+FILE: catalog/model/total/coupon.php
+CODE: $discount_total = 0;
+LINE: 109
+CODE: $sub_total += $product['total'];
+LINE: 123
+CODE: $total_data[] = array(
+LINE: 192
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer
+LINE: 307
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/controller/marketing/coupon.php
+CODE: function getForm() {
+LINE: 290
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+MOD: Tracking Discount (OC2)
+CODE: if (!$this->request->post['code']) {
+LINE: 1221
+CODE: ('tab_transaction');
+LINE: 695
+CODE: if (isset($this->request->get['affiliate_id'])) {
+LINE: 895
+CODE: $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id
+LINE: 56
+CODE: SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+LINE: 61
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: <?php echo $footer;
+LINE: 478
+----------------------------------------------------------------
+MOD: Tracking Input for openCart 2
+CODE: if (!$this->request->post['code']) {
+LINE: 1281
+CODE: $coupon_info = $this->model_marketing_coupon->getCouponByCode
+LINE: 584
+FILE: catalog/controller/account/register.php
+CODE: $data['column_left'] =
+LINE: 369
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 410
+FILE: catalog/controller/affiliate/register.php
+CODE: $data['column_left'] =
+LINE: 370
+CODE: function validate() {
+LINE: 410
+FILE: catalog/controller/affiliate/tracking.php
+CODE: function index() {
+LINE: 18
+FILE: catalog/controller/total/coupon.php
+CODE: ->getCoupon($coupon);
+LINE: 41
+CODE: $this->language->get('text_success');
+LINE: 62
+FILE: catalog/controller/checkout/register.php
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 129
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 199
+FILE: catalog/model/affiliate/affiliate.php
+CODE: $affiliate_id = $this->db->getLastId();
+LINE: 12
+CODE: public function editPayment(
+LINE: 106
+CODE: public function getCoupon($code) {
+LINE: 2
+CODE: if ($status) {
+LINE: 101
+FILE: catalog/view/theme/default/template/account/register.tpl
+CODE: <?php echo $footer
+LINE: 711
+FILE: catalog/view/theme/default/template/affiliate/register.tpl
+CODE: <?php echo $footer
+LINE: 338
+FILE: catalog/view/theme/default/template/affiliate/tracking.tpl
+CODE: <?php echo $footer
+LINE: 135
+FILE: catalog/view/theme/default/template/checkout/register.tpl
+CODE: <div class="row">
+LINE: 12
+----------------------------------------------------------------
+2016-01-20 15:21:02 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+MOD: Affiliate Tracking with Coupons (OC2)
+FILE: admin/controller/marketing/coupon.php
+CODE: public function index(
+LINE: 29
+CODE: function getForm() {
+LINE: 314
+CODE: $this->response->setOutput($this->load->view('marketing/coupon_form.tpl'
+LINE: 608
+FILE: admin/model/marketing/coupon.php
+CODE: $coupon_id = $this->db->getLastId();
+LINE: 21
+CODE: function editCoupon($coupon_id, $data) {
+LINE: 54
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE coupon_id = '" . (int)$coupon_id . "'");
+LINE: 99
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE code = '" . $this->db->escape($code) . "'");
+LINE: 114
+FILE: admin/language/en-US/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/english/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/fr-CA/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer; ?>
+LINE: 339
+FILE: catalog/model/total/coupon.php
+CODE: public function getCoupon(
+LINE: 20
+CODE: if ($coupon_query->num_rows)
+LINE: 39
+CODE: if ($status) {
+LINE: 114
+LINE: 177
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+FILE: admin/controller/marketing/affiliate.php
+CODE: $data['transactions'] = array();
+LINE: 1157
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1159
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1181
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 87
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 415
+CODE: => $result['email'],
+LINE: 445
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 491
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 634
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 843
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 849
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 899
+CODE: public function autocomplete() {
+LINE: 1329
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+FILE: catalog/controller/affiliate/account.php
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 61
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $data['continue'] =
+LINE: 113
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+CODE: $discount_total = 0;
+LINE: 146
+CODE: $sub_total += $product['total'];
+LINE: 160
+CODE: $total_data[] = array(
+LINE: 234
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+FILE: system/library/customer.php
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 80
+CODE: function logout() {
+LINE: 96
+CODE: public function getRewardPoints(
+LINE: 209
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+CODE: <?php echo $footer
+LINE: 361
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer;
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <?php echo $content_bottom;
+LINE: 51
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/controller/customer/customer.php
+CODE: function getForm() {
+LINE: 680
+CODE: if (isset($this->request->post['firstname'
+LINE: 899
+FILE: admin/model/customer/customer.php
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer;
+LINE: 1208
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+CODE: function getForm() {
+LINE: 315
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+MOD: Tracking Discount (OC2)
+CODE: if (!$this->request->post['code']) {
+LINE: 1221
+CODE: ('tab_transaction');
+LINE: 695
+CODE: if (isset($this->request->get['affiliate_id'])) {
+LINE: 895
+CODE: $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id
+LINE: 56
+CODE: SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+LINE: 61
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: <?php echo $footer;
+LINE: 478
+----------------------------------------------------------------
+MOD: Tracking Input for openCart 2
+CODE: if (!$this->request->post['code']) {
+LINE: 1281
+CODE: $coupon_info = $this->model_marketing_coupon->getCouponByCode
+LINE: 655
+FILE: catalog/controller/account/register.php
+CODE: $data['column_left'] =
+LINE: 369
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 410
+FILE: catalog/controller/affiliate/register.php
+CODE: $data['column_left'] =
+LINE: 370
+CODE: function validate() {
+LINE: 410
+FILE: catalog/controller/affiliate/tracking.php
+CODE: function index() {
+LINE: 18
+FILE: catalog/controller/total/coupon.php
+CODE: ->getCoupon($coupon);
+LINE: 41
+CODE: $this->language->get('text_success');
+LINE: 62
+FILE: catalog/controller/checkout/register.php
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 129
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 199
+FILE: catalog/model/affiliate/affiliate.php
+CODE: $affiliate_id = $this->db->getLastId();
+LINE: 12
+CODE: public function editPayment(
+LINE: 106
+CODE: public function getCoupon($code) {
+LINE: 20
+CODE: if ($status) {
+LINE: 133
+FILE: catalog/view/theme/default/template/account/register.tpl
+CODE: <?php echo $footer
+LINE: 711
+FILE: catalog/view/theme/default/template/affiliate/register.tpl
+CODE: <?php echo $footer
+LINE: 338
+FILE: catalog/view/theme/default/template/affiliate/tracking.tpl
+CODE: <?php echo $footer
+LINE: 135
+FILE: catalog/view/theme/default/template/checkout/register.tpl
+CODE: <div class="row">
+LINE: 12
+----------------------------------------------------------------
+2016-01-20 15:25:33 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+MOD: Accounts Combine module for openCart 2
+FILE: admin/controller/marketing/affiliate.php
+CODE: function validateForm() {
+LINE: 1030
+CODE: if (!$this->request->post['code']) {
+LINE: 1129
+CODE: model_marketing_affiliate->addAffiliate($this->request->post);
+LINE: 39
+CODE: model_marketing_affiliate->editAffiliate($this->request->get['affiliate_id'], $this->request->post);
+LINE: 101
+CODE: protected function validateForm
+LINE: 1060
+CODE: function getForm() {
+LINE: 624
+FILE: admin/controller/customer/customer.php
+CODE: _customer->editCustomer($this->request->get['customer_id'], $this->request->post);
+LINE: 92
+CODE: function getForm() {
+LINE: 701
+FILE: admin/model/customer/customer.php
+CODE: function deleteCustomer($customer_id) {
+LINE: 66
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: ? $('#form-affiliate').submit() :
+LINE: 5
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer
+LINE: 1191
+FILE: catalog/controller/account/account.php
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 114
+FILE: catalog/controller/account/address.php
+CODE: if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/address_form.tpl'))
+LINE: 492
+FILE: catalog/controller/account/forgotten.php
+CODE: model_account_customer->editPassword($this->request->post['email'], $password);
+LINE: 38
+FILE: catalog/controller/account/login.php
+CODE: $this->customer->logout();
+LINE: 14
+CODE: $customer_info && $this->customer->login($customer_info['email'], '', true)) {
+LINE: 37
+CODE: $this->model_account_customer->deleteLoginAttempts
+LINE: 230
+FILE: catalog/controller/account/logout.php
+CODE: $this->customer->logout();
+LINE: 11
+FILE: catalog/controller/account/password.php
+CODE: model_account_customer->editPassword($this->customer->getEmail(), $this->request->post['password']);
+LINE: 28
+FILE: catalog/controller/account/register.php
+CODE: $this->document->setTitle($this->language->get('heading_title'));
+LINE: 16
+CODE: $this->response->redirect($this->url->link('account/success')
+LINE: 49
+CODE: if (isset($this->request->post['agree'])) {
+LINE: 446
+CODE: function validate() {
+LINE: 507
+FILE: catalog/controller/affiliate/account.php
+CODE: !$this->affiliate->isLogged()) {
+LINE: 12
+CODE: $data['breadcrumbs'] = array();
+LINE: 33
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 95
+FILE: catalog/controller/affiliate/edit.php
+CODE: function index() {
+LINE: 9
+FILE: catalog/controller/affiliate/forgotten.php
+CODE: $this->load->language('affiliate/forgotten');
+LINE: 14
+FILE: catalog/controller/affiliate/login.php
+CODE: $this->load->language('affiliate/login');
+LINE: 23
+FILE: catalog/controller/affiliate/logout.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/affiliate/password.php
+CODE: $this->load->language('affiliate/password');
+LINE: 16
+FILE: catalog/controller/affiliate/payment.php
+CODE: function index() {
+LINE: 9
+FILE: catalog/controller/affiliate/register.php
+CODE: $this->load->language('affiliate/register');
+LINE: 23
+FILE: catalog/controller/affiliate/tracking.php
+CODE: $this->load->language('affiliate/tracking');
+LINE: 22
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $this->load->language('affiliate/transaction');
+LINE: 22
+CODE: $data['continue'
+LINE: 122
+FILE: catalog/controller/checkout/login.php
+CODE: unset($this->session->data['guest'
+LINE: 91
+FILE: catalog/controller/checkout/register.php
+CODE: public function index(
+LINE: 11
+CODE: function index() {
+LINE: 16
+CODE: customer->login($this->request->post['email'], $this->request->post['password']);
+LINE: 266
+CODE: $data['shipping_required'] = $this->cart->hasShipping();
+LINE: 212
+CODE: $this->load->model('account/customer');
+LINE: 297
+CODE: $json['error']['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+LINE: 357
+FILE: catalog/controller/module/account.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/module/affiliate.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/model/affiliate/affiliate.php
+CODE: function getAffiliateByCode($code) {
+LINE: 137
+FILE: catalog/model/account/address.php
+CODE: $address_id = $this->db->getLastId();
+LINE: 20
+CODE: "' WHERE address_id  = '" . (int)$address_id . "' AND customer_id = '" . (int)$this->customer->getId() . "'");
+LINE: 47
+FILE: catalog/model/account/customer.php
+CODE: $this->load->language('mail/customer');
+LINE: 40
+CODE: function editCustomer($data) {
+LINE: 125
+CODE: function editPassword($email, $password) {
+LINE: 145
+FILE: system/library/affiliate.php
+CODE: public function logout(
+LINE: 64
+CODE: public function login($email, $password) {
+LINE: 35
+CODE: affiliate_id = '" . (int)$this->session->data['affiliate_id'] . "' AND status = '1'");
+LINE: 22
+CODE: $affiliate_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "affiliate WHERE LOWER
+LINE: 51
+CODE: OR password = '" . $this->db->escape(md5($password)) . "') AND status = '1' AND approved = '1'");
+LINE: 58
+FILE: system/library/customer.php
+REGEX: /if\s*\(.customer_query->num_rows\)\s*\{[\n\r\s]*.this->session->data\['customer_id'\]\s*=\s*.customer_query->row\['customer_id'\]\;/sm
+LINE: 53
+----------------------------------------------------------------
+MOD: Accounts Combine module for openCart 2 - Templates
+FILE: catalog/view/theme/default/template/account/account.tpl
+CODE: <?php echo $content_bottom
+LINE: 58
+FILE: catalog/view/theme/default/template/account/address_form.tpl
+CODE: <?php echo $footer
+LINE: 435
+FILE: catalog/view/theme/default/template/account/register.tpl
+CODE: <?php if ($text_agree)
+LINE: 671
+CODE: <?php echo $footer
+LINE: 902
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <li><a href="<?php echo $payment;
+LINE: 32
+CODE: echo $text_payment; ?></a></li>
+LINE: 38
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: <div class="text-right"><?php echo $pagination; ?>
+LINE: 63
+CODE: <?php echo $footer
+LINE: 126
+FILE: catalog/view/theme/default/template/checkout/register.tpl
+CODE: <?php if ($text_agree)
+LINE: 443
+REGEX: /name=.'country_id.'\]'\)\.trigger\('change'\)\;[\n\r\s]*\/\/--><\/script>/ms
+LINE: 623
+----------------------------------------------------------------
+MOD: Affiliate Tracking with Coupons (OC2)
+FILE: admin/controller/marketing/coupon.php
+CODE: public function index(
+LINE: 29
+CODE: function getForm() {
+LINE: 314
+CODE: $this->response->setOutput($this->load->view('marketing/coupon_form.tpl'
+LINE: 608
+FILE: admin/model/marketing/coupon.php
+CODE: $coupon_id = $this->db->getLastId();
+LINE: 21
+CODE: function editCoupon($coupon_id, $data) {
+LINE: 54
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE coupon_id = '" . (int)$coupon_id . "'");
+LINE: 99
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE code = '" . $this->db->escape($code) . "'");
+LINE: 114
+FILE: admin/language/en-US/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/english/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/fr-CA/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer; ?>
+LINE: 339
+FILE: catalog/model/total/coupon.php
+CODE: public function getCoupon(
+LINE: 20
+CODE: if ($coupon_query->num_rows)
+LINE: 39
+CODE: if ($status) {
+LINE: 114
+LINE: 177
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+CODE: $data['transactions'] = array();
+LINE: 1264
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1266
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1288
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 104
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 442
+CODE: => $result['email'],
+LINE: 472
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 518
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 692
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 901
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 907
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 957
+CODE: public function autocomplete() {
+LINE: 1436
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 83
+CODE: $data['continue'] =
+LINE: 153
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+CODE: $discount_total = 0;
+LINE: 146
+CODE: $sub_total += $product['total'];
+LINE: 160
+CODE: $total_data[] = array(
+LINE: 234
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 90
+CODE: function logout() {
+LINE: 106
+CODE: public function getRewardPoints(
+LINE: 219
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+CODE: <?php echo $footer
+LINE: 361
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+CODE: <?php echo $footer;
+LINE: 496
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+CODE: <?php echo $content_bottom;
+LINE: 66
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+CODE: function getForm() {
+LINE: 690
+CODE: if (isset($this->request->post['firstname'
+LINE: 930
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+CODE: <?php echo $footer;
+LINE: 1221
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+CODE: function getForm() {
+LINE: 315
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+MOD: Tracking Discount (OC2)
+CODE: if (!$this->request->post['code']) {
+LINE: 1328
+CODE: ('tab_transaction');
+LINE: 753
+CODE: if (isset($this->request->get['affiliate_id'])) {
+LINE: 953
+CODE: $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id
+LINE: 56
+CODE: SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+LINE: 61
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: <?php echo $footer;
+LINE: 514
+----------------------------------------------------------------
+MOD: Tracking Input for openCart 2
+CODE: if (!$this->request->post['code']) {
+LINE: 1388
+CODE: $coupon_info = $this->model_marketing_coupon->getCouponByCode
+LINE: 655
+CODE: $data['column_left'] =
+LINE: 479
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 561
+CODE: $data['column_left'] =
+LINE: 384
+CODE: function validate() {
+LINE: 424
+CODE: function index() {
+LINE: 18
+FILE: catalog/controller/total/coupon.php
+CODE: ->getCoupon($coupon);
+LINE: 41
+CODE: $this->language->get('text_success');
+LINE: 62
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 243
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 354
+CODE: $affiliate_id = $this->db->getLastId();
+LINE: 12
+CODE: public function editPayment(
+LINE: 106
+CODE: public function getCoupon($code) {
+LINE: 20
+CODE: if ($status) {
+LINE: 133
+CODE: <?php echo $footer
+LINE: 913
+FILE: catalog/view/theme/default/template/affiliate/register.tpl
+CODE: <?php echo $footer
+LINE: 338
+FILE: catalog/view/theme/default/template/affiliate/tracking.tpl
+CODE: <?php echo $footer
+LINE: 135
+CODE: <div class="row">
+LINE: 12
+----------------------------------------------------------------
+2016-01-20 15:30:46 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - UNABLE TO FIND FILE(S), IGNORED:
+  file = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/*/template/module/special.tpl'
+Modification::refresh - Done 'Ask for Price with Disabled Button v2.1.0.1'
+----------------------------------------------------------------
+Modification::refresh - Processing 'Bugfixes for ControllerUserUserPermission'
+Modification::refresh - Done 'Bugfixes for ControllerUserUserPermission'
+----------------------------------------------------------------
+MOD: Accounts Combine module for openCart 2
+FILE: admin/controller/marketing/affiliate.php
+CODE: function validateForm() {
+LINE: 1030
+CODE: if (!$this->request->post['code']) {
+LINE: 1129
+CODE: model_marketing_affiliate->addAffiliate($this->request->post);
+LINE: 39
+CODE: model_marketing_affiliate->editAffiliate($this->request->get['affiliate_id'], $this->request->post);
+LINE: 101
+CODE: protected function validateForm
+LINE: 1060
+CODE: function getForm() {
+LINE: 624
+FILE: admin/controller/customer/customer.php
+CODE: _customer->editCustomer($this->request->get['customer_id'], $this->request->post);
+LINE: 92
+CODE: function getForm() {
+LINE: 701
+FILE: admin/model/customer/customer.php
+CODE: function deleteCustomer($customer_id) {
+LINE: 66
+FILE: admin/view/template/marketing/affiliate_form.tpl
+CODE: <?php echo $footer
+LINE: 460
+FILE: admin/view/template/marketing/affiliate_list.tpl
+CODE: ? $('#form-affiliate').submit() :
+LINE: 5
+FILE: admin/view/template/customer/customer_form.tpl
+CODE: <?php echo $footer
+LINE: 1191
+FILE: catalog/controller/account/account.php
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 114
+FILE: catalog/controller/account/address.php
+CODE: if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/account/address_form.tpl'))
+LINE: 492
+FILE: catalog/controller/account/forgotten.php
+CODE: model_account_customer->editPassword($this->request->post['email'], $password);
+LINE: 38
+FILE: catalog/controller/account/login.php
+CODE: $this->customer->logout();
+LINE: 14
+CODE: $customer_info && $this->customer->login($customer_info['email'], '', true)) {
+LINE: 37
+CODE: $this->model_account_customer->deleteLoginAttempts
+LINE: 230
+FILE: catalog/controller/account/logout.php
+CODE: $this->customer->logout();
+LINE: 11
+FILE: catalog/controller/account/password.php
+CODE: model_account_customer->editPassword($this->customer->getEmail(), $this->request->post['password']);
+LINE: 28
+FILE: catalog/controller/account/register.php
+CODE: $this->document->setTitle($this->language->get('heading_title'));
+LINE: 16
+CODE: $this->response->redirect($this->url->link('account/success')
+LINE: 49
+CODE: if (isset($this->request->post['agree'])) {
+LINE: 446
+CODE: function validate() {
+LINE: 507
+FILE: catalog/controller/affiliate/account.php
+CODE: !$this->affiliate->isLogged()) {
+LINE: 12
+CODE: $data['breadcrumbs'] = array();
+LINE: 33
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 95
+FILE: catalog/controller/affiliate/edit.php
+CODE: function index() {
+LINE: 9
+FILE: catalog/controller/affiliate/forgotten.php
+CODE: $this->load->language('affiliate/forgotten');
+LINE: 14
+FILE: catalog/controller/affiliate/login.php
+CODE: $this->load->language('affiliate/login');
+LINE: 23
+FILE: catalog/controller/affiliate/logout.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/affiliate/password.php
+CODE: $this->load->language('affiliate/password');
+LINE: 16
+FILE: catalog/controller/affiliate/payment.php
+CODE: function index() {
+LINE: 9
+FILE: catalog/controller/affiliate/register.php
+CODE: $this->load->language('affiliate/register');
+LINE: 23
+FILE: catalog/controller/affiliate/tracking.php
+CODE: $this->load->language('affiliate/tracking');
+LINE: 22
+FILE: catalog/controller/affiliate/transaction.php
+CODE: $this->load->language('affiliate/transaction');
+LINE: 22
+CODE: $data['continue'
+LINE: 122
+FILE: catalog/controller/checkout/login.php
+CODE: unset($this->session->data['guest'
+LINE: 91
+FILE: catalog/controller/checkout/register.php
+CODE: public function index(
+LINE: 11
+CODE: function index() {
+LINE: 16
+CODE: customer->login($this->request->post['email'], $this->request->post['password']);
+LINE: 266
+CODE: $data['shipping_required'] = $this->cart->hasShipping();
+LINE: 212
+CODE: $this->load->model('account/customer');
+LINE: 297
+CODE: $json['error']['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
+LINE: 357
+FILE: catalog/controller/module/account.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/module/affiliate.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/model/affiliate/affiliate.php
+CODE: function getAffiliateByCode($code) {
+LINE: 137
+FILE: catalog/model/account/address.php
+CODE: $address_id = $this->db->getLastId();
+LINE: 20
+CODE: "' WHERE address_id  = '" . (int)$address_id . "' AND customer_id = '" . (int)$this->customer->getId() . "'");
+LINE: 47
+FILE: catalog/model/account/customer.php
+CODE: $this->load->language('mail/customer');
+LINE: 40
+CODE: function editCustomer($data) {
+LINE: 125
+CODE: function editPassword($email, $password) {
+LINE: 145
+FILE: system/library/affiliate.php
+CODE: public function logout(
+LINE: 64
+CODE: public function login($email, $password) {
+LINE: 35
+CODE: affiliate_id = '" . (int)$this->session->data['affiliate_id'] . "' AND status = '1'");
+LINE: 22
+CODE: $affiliate_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "affiliate WHERE LOWER
+LINE: 51
+CODE: OR password = '" . $this->db->escape(md5($password)) . "') AND status = '1' AND approved = '1'");
+LINE: 58
+FILE: system/library/customer.php
+REGEX: /if\s*\(.customer_query->num_rows\)\s*\{[\n\r\s]*.this->session->data\['customer_id'\]\s*=\s*.customer_query->row\['customer_id'\]\;/sm
+LINE: 53
+----------------------------------------------------------------
+MOD: Accounts Combine module for openCart 2 - Templates
+FILE: catalog/view/theme/default/template/account/account.tpl
+CODE: <?php echo $content_bottom
+LINE: 58
+FILE: catalog/view/theme/default/template/account/address_form.tpl
+CODE: <?php echo $footer
+LINE: 435
+FILE: catalog/view/theme/default/template/account/register.tpl
+CODE: <?php if ($text_agree)
+LINE: 671
+CODE: <?php echo $footer
+LINE: 902
+FILE: catalog/view/theme/default/template/affiliate/account.tpl
+CODE: <li><a href="<?php echo $payment;
+LINE: 32
+CODE: echo $text_payment; ?></a></li>
+LINE: 38
+FILE: catalog/view/theme/default/template/affiliate/transaction.tpl
+CODE: <div class="text-right"><?php echo $pagination; ?>
+LINE: 63
+CODE: <?php echo $footer
+LINE: 126
+FILE: catalog/view/theme/default/template/checkout/register.tpl
+CODE: <?php if ($text_agree)
+LINE: 443
+REGEX: /name=.'country_id.'\]'\)\.trigger\('change'\)\;[\n\r\s]*\/\/--><\/script>/ms
+LINE: 623
+----------------------------------------------------------------
+MOD: Affiliate Tracking with Coupons (OC2)
+FILE: admin/controller/marketing/coupon.php
+CODE: public function index(
+LINE: 29
+CODE: function getForm() {
+LINE: 314
+CODE: $this->response->setOutput($this->load->view('marketing/coupon_form.tpl'
+LINE: 608
+FILE: admin/model/marketing/coupon.php
+CODE: $coupon_id = $this->db->getLastId();
+LINE: 21
+CODE: function editCoupon($coupon_id, $data) {
+LINE: 54
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE coupon_id = '" . (int)$coupon_id . "'");
+LINE: 99
+CODE: DISTINCT * FROM " . DB_PREFIX . "coupon WHERE code = '" . $this->db->escape($code) . "'");
+LINE: 114
+FILE: admin/language/en-US/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/english/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/language/fr-CA/marketing/coupon.php
+CODE: ?php
+LINE: 11
+FILE: admin/view/template/marketing/coupon_form.tpl
+CODE: <?php echo $footer; ?>
+LINE: 339
+FILE: catalog/model/total/coupon.php
+CODE: public function getCoupon(
+LINE: 20
+CODE: if ($coupon_query->num_rows)
+LINE: 39
+CODE: if ($status) {
+LINE: 114
+LINE: 177
+----------------------------------------------------------------
+Modification::refresh - Processing 'Ask for Price with Disabled Button v2.1.0.1'
+Modification::refresh - SEARCH NOT FOUND (ABORTING MOD):
+  file name = '/home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/bestseller.tpl'
+  search = '<?php if ($product['tax']) { ?>'
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (controllers, models, system)
+FILE: admin/controller/catalog/product.php
+CODE: private $error = array();
+LINE: 57
+CODE: public function edit() {
+LINE: 138
+CODE: $product_total = $this->model_catalog_product->getTotalProducts($filter_data);
+LINE: 447
+CODE: $data['products'][] = array(
+LINE: 483
+CODE: $data['products'][] = array(
+LINE: 492
+CODE: $data['tab_design'] = $this->language->get('tab_design');
+LINE: 798
+CODE: $this->model_catalog_product->getProductDiscounts($this->request->get['product_id']);
+LINE: 1330
+CODE: $data['product_discounts'][] = array(
+LINE: 1346
+CODE: $this->model_catalog_product->getProductSpecials($this->request->get['product_id']);
+LINE: 1368
+CODE: $data['product_specials'][] = array(
+LINE: 1384
+CODE: $this->model_design_layout->getLayouts();
+LINE: 1499
+CODE: if ($this->error && !isset($this->error['warning'])) {
+LINE: 1618
+CODE: function getForm() {
+LINE: 662
+CODE: $data['transactions'] = array();
+LINE: 1264
+CODE: $results = $this->model_marketing_affiliate->getTransactions($this->request->get['affiliate_id'], ($page - 1) * 10, 10);
+LINE: 1266
+CODE: $data['results'] = sprintf($this->language->get('text_pagination'), ($transaction_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($transaction_total - 10)) ? $transaction_total : ((($page - 1) * 10) + 10), $transaction_total, ceil($transaction_total / 10));
+LINE: 1288
+CODE: private $error = array();
+LINE: 7
+CODE: public function add() {
+LINE: 27
+CODE: public function edit() {
+LINE: 104
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalAffiliates($filter_data);
+LINE: 442
+CODE: => $result['email'],
+LINE: 472
+CODE: $data['button_filter'] = $this->language->get('button_filter');
+LINE: 518
+CODE: $data['text_bank'] = $this->language->get('text_bank');
+LINE: 692
+CODE: if (isset($this->request->get['affiliate_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+LINE: 901
+CODE: $affiliate_info = $this->model_marketing_affiliate->getAffiliate($this->request->get['affiliate_id']);
+LINE: 907
+CODE: if (isset($this->request->post['firstname'])) {
+LINE: 957
+CODE: public function autocomplete() {
+LINE: 1436
+FILE: admin/controller/report/affiliate.php
+CODE: $this->load->language('report/affiliate');
+LINE: 8
+CODE: $data['breadcrumbs'] = array();
+LINE: 49
+CODE: 'filter_date_start'	=> $filter_date_start,
+LINE: 71
+CODE: $results = $this->model_report_affiliate->getCommission($filter_data);
+LINE: 84
+CODE: $data['affiliates'][] = array(
+LINE: 92
+CODE: 'affiliate'  => $result['affiliate'
+LINE: 102
+CODE: $data['heading_title'] = $this->language->get('heading_title');
+LINE: 123
+CODE: $pagination = new Pagination();
+LINE: 160
+CODE: $data['header'] = $this->load->controller('common/header');
+LINE: 178
+FILE: admin/controller/sale/order.php
+CODE: function getForm() {
+LINE: 355
+CODE: ('button_history_add');
+LINE: 816
+CODE: if ($order_info['affiliate_id']) {
+LINE: 1077
+CODE: getTotalTransactionsByOrderId($this->request->get['order_id']);
+LINE: 1145
+CODE: $affiliate_total = $this->model_marketing_affiliate->getTotalTransactionsByOrderId
+LINE: 1542
+CODE: $this->model_marketing_affiliate->deleteTransaction($order_id);
+LINE: 1587
+CODE: public function index(
+LINE: 37
+FILE: admin/model/marketing/affiliate.php
+CODE: function editAffiliate($affiliate_id, $data) {
+LINE: 19
+CODE: function addAffiliate($data) {
+LINE: 7
+CODE: function getAffiliates($data = array()) {
+LINE: 63
+CODE: function getTotalAffiliates($data = array()) {
+LINE: 182
+CODE: $this->currency->format($this->getTransactionTotal($affiliate_id), $this->config->get('config_currency')));
+LINE: 262
+CODE: public function getTotalTransactionsByOrderId(
+LINE: 528
+FILE: admin/model/report/affiliate.php
+CODE: public function getCommission(
+LINE: 77
+CODE: function getCommission($data = array()) {
+LINE: 82
+FILE: admin/model/tool/backup.php
+CODE: function restore($sql) {
+LINE: 7
+CODE: $this->cache->delete('*');
+LINE: 21
+CODE: $this->url->link('affiliate/transaction', '', 'SSL');
+LINE: 83
+CODE: $data['continue'] =
+LINE: 153
+FILE: catalog/controller/common/footer.php
+CODE: function index() {
+LINE: 7
+FILE: catalog/controller/payment/pp_express.php
+CODE: $this->request->post['txn_type'] == 'recurring_payment'
+LINE: 1757
+CODE: $discount_total = 0;
+LINE: 146
+CODE: $sub_total += $product['total'];
+LINE: 160
+CODE: $total_data[] = array(
+LINE: 234
+CODE: ?php
+LINE: 11
+FILE: system/library/cart.php
+CODE: class Cart {
+LINE: 6
+CODE: $product_data = array();
+LINE: 42
+LINE: 310
+CODE: foreach ($cart_query->rows as $cart) {
+LINE: 34
+LINE: 60
+CODE: SELECT price FROM " . DB_PREFIX . "product_discount
+LINE: 201
+CODE: SELECT price FROM " . DB_PREFIX . "product_special
+LINE: 208
+CODE: if ($product_discount_query->num_rows
+LINE: 208
+CODE: if ($product_special_query->num_rows
+LINE: 220
+CODE: return $product_data;
+LINE: 326
+CODE: $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "customer_ip
+LINE: 39
+CODE: customer SET ip = '" . $this->db->escape($this->request->server['REMOTE_ADDR']) . "' WHERE customer_id = '" . (int)$this->customer_id . "'");
+LINE: 37
+LINE: 90
+CODE: function logout() {
+LINE: 106
+CODE: public function getRewardPoints(
+LINE: 219
+----------------------------------------------------------------
+MOD: Multi tier affiliate system (templates, language)
+FILE: admin/view/template/catalog/category_form.tpl
+CODE: <?php echo $footer
+LINE: 325
+FILE: admin/view/template/catalog/manufacturer_form.tpl
+CODE: <?php echo $footer
+LINE: 115
+CODE: <?php echo $footer
+LINE: 361
+FILE: admin/view/template/catalog/product_form.tpl
+CODE: <select name="product_discount[<?php echo $discount_row; ?>][customer_group_id]" class="form-control">
+LINE: 730
+CODE: <select name="product_special[<?php echo $special_row; ?>][customer_group_id]" class="form-control">
+LINE: 788
+CODE: <td class="text-left"><button type="button" onclick="$('#discount-row<?php echo $discount_row; ?>').
+LINE: 776
+CODE: <td class="text-left"><button type="button" onclick="$('#special-row<?php echo $special_row; ?>').
+LINE: 856
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#discount-row' + discount_row + '\').remove();
+LINE: 1372
+CODE: html += '  <td class="text-left"><button type="button" onclick="$(\'#special-row' + special_row + '\').remove();
+LINE: 1411
+CODE: <?php echo $footer;
+LINE: 1521
+FILE: admin/view/template/catalog/product_list.tpl
+CODE: <td class="text-right"><?php if ($sort == 'p.quantity') { ?>
+LINE: 102
+CODE: colspan="8"
+LINE: 150
+CODE: <td class="text-right"><?php if ($product['quantity'] <= 0) { ?>
+LINE: 158
+CODE: <?php echo $footer;
+LINE: 496
+CODE: == 'c.email
+LINE: 103
+CODE: == 'c.status
+LINE: 109
+CODE: == 'c.date_added
+LINE: 114
+CODE: <td class="text-right"><?php echo $column_balance; ?></td>
+LINE: 111
+CODE: <td class="text-right"><?php echo $affiliate['balance']; ?></td>
+LINE: 139
+FILE: admin/view/template/report/affiliate.tpl
+CODE: $column_commission
+LINE: 50
+CODE: <td class="text-right"><?php echo $column_orders; ?></td>
+LINE: 51
+CODE: <?php echo $column_total; ?></td>
+LINE: 55
+CODE: <?php echo $affiliate['affiliate']; ?>
+LINE: 63
+CODE: $affiliate['commission']; ?></td>
+LINE: 74
+CODE: <td class="text-right"><?php echo $affiliate['total']; ?></td>
+LINE: 76
+CODE: colspan="7"
+LINE: 82
+CODE: <?php echo $affiliate['edit']; ?>"
+LINE: 77
+CODE: location = url;
+LINE: 122
+CODE: <?php echo $footer
+LINE: 142
+FILE: admin/view/template/sale/order_form.tpl
+CODE: <?php echo $footer
+LINE: 2572
+FILE: admin/view/template/sale/order_info.tpl
+CODE: <?php echo $footer
+LINE: 662
+CODE: php echo $commission
+LINE: 107
+CODE: <div class="panel panel-default">
+LINE: 184
+CODE: <?php echo $content_bottom;
+LINE: 66
+CODE: $balance; ?></strong>.</p>
+LINE: 51
+FILE: admin/language/en-US/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/sale/customer.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/en-US/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: admin/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 9
+FILE: catalog/language/english/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/checkout/checkout.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/english/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/es-ES/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: catalog/language/fr-CA/mail/affiliate.php
+CODE: <?php
+LINE: 15
+FILE: admin/language/en-US/en-US.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 11
+FILE: admin/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 11
+CODE: <?php
+LINE: 5
+FILE: catalog/language/es-ES/es-ES.php
+CODE: <?php
+LINE: 5
+FILE: catalog/language/fr-CA/fr-CA.php
+CODE: <?php
+LINE: 5
+FILE: admin/language/en-US/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/english/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/fr-CA/catalog/product.php
+CODE: <?php
+LINE: 23
+FILE: admin/language/en-US/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/english/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/fr-CA/report/affiliate.php
+CODE: <?php
+LINE: 10
+FILE: admin/language/en-US/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/english/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/fr-CA/marketing/affiliate.php
+CODE: <?php
+LINE: 21
+FILE: admin/language/en-US/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/english/sale/order.php
+CODE: <?php
+LINE: 14
+FILE: admin/language/fr-CA/sale/order.php
+CODE: <?php
+LINE: 14
+CODE: function getForm() {
+LINE: 690
+CODE: if (isset($this->request->post['firstname'
+LINE: 930
+CODE: $customer_id = $this->db->getLastId();
+LINE: 12
+CODE: if ($data['password']) {
+LINE: 41
+CODE: <?php echo $footer;
+LINE: 1221
+FILE: admin/language/english/customer/customer.php
+CODE: <?php
+LINE: 9
+CODE: function getForm() {
+LINE: 315
+FILE: admin/controller/catalog/manufacturer.php
+CODE: function getForm() {
+LINE: 278
+FILE: admin/controller/catalog/category.php
+CODE: function getForm() {
+LINE: 299
+----------------------------------------------------------------
+MOD: OC 2.1.0.1 and higher - Fix for Affiliate Pack extensions
+CODE: function controller($route, $data = array()) {
+LINE: 13
+CODE: $model = str_replace('../', '', (string)$model);
+LINE: 66
+CODE: new $class($this->registry));
+LINE: 79
+CODE: function view($template, $data = array()) {
+LINE: 93
+CODE: function language($language) {
+LINE: 138
+CODE: function load($filename) {
+LINE: 21
+FILE: system/library/url.php
+CODE: function link($route, $args = '', $secure = false) {
+LINE: 18
+----------------------------------------------------------------
+MOD: Tracking Discount (OC2)
+CODE: if (!$this->request->post['code']) {
+LINE: 1328
+CODE: ('tab_transaction');
+LINE: 753
+CODE: if (isset($this->request->get['affiliate_id'])) {
+LINE: 953
+CODE: $query = $this->db->query("SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id
+LINE: 56
+CODE: SELECT DISTINCT * FROM " . DB_PREFIX . "affiliate WHERE affiliate_id = '" . (int)$affiliate_id . "'");
+LINE: 61
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: ?php
+LINE: 12
+CODE: <?php echo $footer;
+LINE: 514
+----------------------------------------------------------------
+MOD: Tracking Input for openCart 2
+CODE: if (!$this->request->post['code']) {
+LINE: 1388
+CODE: $coupon_info = $this->model_marketing_coupon->getCouponByCode
+LINE: 655
+CODE: $data['column_left'] =
+LINE: 479
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 561
+CODE: $data['column_left'] =
+LINE: 384
+CODE: function validate() {
+LINE: 424
+CODE: function index() {
+LINE: 18
+FILE: catalog/controller/total/coupon.php
+CODE: ->getCoupon($coupon);
+LINE: 41
+CODE: $this->language->get('text_success');
+LINE: 62
+CODE: if (file_exists(DIR_TEMPLATE
+LINE: 243
+CODE: if ((utf8_strlen(trim($this->request->post['firstname'])) < 1)
+LINE: 354
+CODE: $affiliate_id = $this->db->getLastId();
+LINE: 12
+CODE: public function editPayment(
+LINE: 106
+CODE: public function getCoupon($code) {
+LINE: 20
+CODE: if ($status) {
+LINE: 133
+CODE: <?php echo $footer
+LINE: 913
+FILE: catalog/view/theme/default/template/affiliate/register.tpl
+CODE: <?php echo $footer
+LINE: 338
+FILE: catalog/view/theme/default/template/affiliate/tracking.tpl
+CODE: <?php echo $footer
+LINE: 135
+CODE: <div class="row">
+LINE: 12
+----------------------------------------------------------------

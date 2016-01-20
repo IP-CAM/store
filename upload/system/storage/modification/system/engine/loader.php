@@ -7,6 +7,11 @@ final class Loader {
 	}
 
 	public function controller($route, $data = array()) {
+	
+
+if(defined('HTTP_CATALOG') && version_compare(VERSION, '2.1', '>=') && strpos($route, 'sale/custom') === 0) $route = substr_replace($route, 'customer', 0, 4); //+mod by yp
+
+		
 		// $this->event->trigger('pre.controller.' . $route, $data);
 
 		$parts = explode('/', str_replace('../', '', (string)$route));
@@ -51,6 +56,15 @@ final class Loader {
 		// $this->event->trigger('pre.model.' . str_replace('/', '.', (string)$model), $data);
 
 		$model = str_replace('../', '', (string)$model);
+	
+//+mod by yp start
+if(defined('HTTP_CATALOG') && version_compare(VERSION, '2.1', '>=') && strpos($model, 'sale/custom') === 0) {
+	$model_old = $model;
+	$model = substr_replace($model, 'customer', 0, 4); 
+}
+//+mod by yp end
+
+		
 
 		$file = DIR_APPLICATION . 'model/' . $model . '.php';
 		$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $model);
@@ -59,6 +73,11 @@ final class Loader {
 			include_once(modification($file));
 
 			$this->registry->set('model_' . str_replace('/', '_', $model), new $class($this->registry));
+	
+
+if(isset($model_old)) $this->registry->set('model_' . str_replace('/', '_', $model_old), new $class($this->registry)); //+mod by yp
+
+		
 		} else {
 			trigger_error('Error: Could not load model ' . $file . '!');
 			exit();
@@ -68,6 +87,11 @@ final class Loader {
 	}
 
 	public function view($template, $data = array()) {
+	
+
+if(defined('HTTP_CATALOG') && version_compare(VERSION, '2.1', '>=') && strpos($template, 'sale/custom') === 0) $template = substr_replace($template, 'customer', 0, 4); //+mod by yp
+
+		
 		// $this->event->trigger('pre.view.' . str_replace('/', '.', $template), $data);
 
 		$file = DIR_TEMPLATE . $template;
@@ -108,6 +132,11 @@ final class Loader {
 	}
 
 	public function language($language) {
+	
+
+if(defined('HTTP_CATALOG') && version_compare(VERSION, '2.1', '>=') && strpos($language, 'sale/custom') === 0) $language = substr_replace($language, 'customer', 0, 4); //+mod by yp
+
+		
 		return $this->registry->get('language')->load($language);
 	}
 }

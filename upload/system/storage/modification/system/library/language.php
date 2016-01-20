@@ -17,6 +17,9 @@ class Language {
 	}
 	
 	public function load($filename) {
+	
+if(defined('HTTP_CATALOG') && version_compare(VERSION, '2.1', '>=') && strpos($filename, 'sale/custom') === 0) $filename = substr_replace($filename, 'customer', 0, 4); //+mod by yp			
+		
 		$_ = array();
 
 		$file = DIR_LANGUAGE . $this->default . '/' . $filename . '.php';

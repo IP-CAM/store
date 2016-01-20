@@ -58,5 +58,5 @@ $_['entry_email_ask']           = 'e-mail';
 $_['text_zero_price']           = 'Demandez un devis';
 $_['text_ask']                  = 'Douter ? ';
 $_['tab_question']              = 'Languette de Douter';
-$_['entry_send_ask']            = 'Soumettre';
+
 

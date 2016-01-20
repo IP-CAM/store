@@ -22,3 +22,7 @@
 2016-01-18 23:11:33 - PHP Notice:  Undefined property: Loader::$currency in /home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/featured.tpl on line 25
 2016-01-18 23:26:09 - PHP Notice:  Undefined property: Loader::$currency in /home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/featured.tpl on line 25
 2016-01-19 8:40:49 - PHP Notice:  Undefined property: Loader::$currency in /home/pedrocones/webmaster/Repository/store/upload/catalog/view/theme/default/template/module/featured.tpl on line 25
+2016-01-19 15:50:49 - PHP Notice:  Indirect modification of overloaded property ControllerApiCustomer::$session has no effect in /home/pedrocones/webmaster/Repository/store/upload/catalog/controller/api/customer.php on line 7
+2016-01-19 15:50:49 - PHP Warning:  Attempt to modify property of non-object in /home/pedrocones/webmaster/Repository/store/upload/catalog/controller/api/customer.php on line 7
+2016-01-19 15:51:15 - PHP Notice:  Indirect modification of overloaded property ControllerApiCustomer::$session has no effect in /home/pedrocones/webmaster/Repository/store/upload/catalog/controller/api/customer.php on line 7
+2016-01-19 15:51:15 - PHP Warning:  Attempt to modify property of non-object in /home/pedrocones/webmaster/Repository/store/upload/catalog/controller/api/customer.php on line 7

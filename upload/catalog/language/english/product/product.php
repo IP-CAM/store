@@ -56,5 +56,5 @@ $_['entry_email_ask']           = 'Email';
 $_['text_zero_price']           = 'Ask for a Quote';
 $_['text_ask']                  = 'Question ? ';
 $_['tab_question']              = 'Question Tab';
-
+$_['entry_send_ask']            = 'Submit';
 

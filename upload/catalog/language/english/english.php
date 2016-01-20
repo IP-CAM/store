@@ -67,3 +67,28 @@ $_['error_upload_6']        = 'Warning: Missing a temporary folder!';
 $_['error_upload_7']        = 'Warning: Failed to write file to disk!';
 $_['error_upload_8']        = 'Warning: File upload stopped by extension!';
 $_['error_upload_999']      = 'Warning: No error code available!';
+
+
+// gogo pedro 20160119
+
+$_['text_zero_price'] = 'Ask for Price'; 
+$_['tab_question'] = 'Ask a Question'; 
+$_['text_ask'] = 'Do you have any questions about '; 
+$_['entry_name_ask'] = 'Your Name:'; 
+$_['entry_email_ask'] = 'Your E-Mail Address:'; 
+$_['entry_question_ask'] = 'Your Question:'; 
+$_['entry_send_ask'] = 'Send'; 
+$_['entry_sending_ask'] = 'Sending...'; 
+$_['text_product_e_ask'] = 'Product Name: %s'; 
+$_['text_url_e_ask'] = 'Product URL: %s'; 
+$_['text_name_e_ask'] = 'Name: %s'; 
+$_['text_email_e_ask'] = 'E-Mail Address: %s'; 
+$_['text_question_e_ask'] = 'Question:'; 
+$_['text_subject_e_ask'] = '%s wants to ask you something about %s'; 
+$_['error_name_ask'] = 'Warning: The Name must be between 3 and 25 characters!'; 
+$_['error_email_ask'] = 'Warning: The E-Mail Address does not appear to be valid!'; 
+$_['error_question_ask'] = 'Warning: The Question must be between 25 and 1000 characters!'; 
+$_['text_success_ask'] = 'Your question has been successfully sent. We will answer you as soon as possible.';
+
+
+
